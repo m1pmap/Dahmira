@@ -1,0 +1,138 @@
+﻿<Window x:Class="Dahmira.Pages.WriteMailCodePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dahmira.Pages"
+        mc:Ignorable="d"
+        Title="WriteMailCodePage" AllowsTransparency="True" Background="Transparent" Height="110" Width="251" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" PreviewKeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="MaxLength" Value="1"/>
+            <EventSetter Event="PreviewTextInput" Handler="TextBox_PreviewTextInput"/>
+            <EventSetter Event="TextChanged" Handler="TextBox_TextChanged"/>
+            <EventSetter Event="GotFocus" Handler="TextBox_GotFocus"/>
+            <EventSetter Event="PreviewMouseDown" Handler="TextBox_PreviewMouseDown"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border"
+                            Background="White"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!--Изменение цвета при фокусе-->
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="MediumSeaGreen"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HyperlinkButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="DarkGray"/>
+            <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="LightBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Стиль для кнопки с закруглёнными краями-->
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border x:Name="border"
+                     CornerRadius="7" 
+                     Background="{TemplateBinding Background}">
+                <Grid 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center">
+                    <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Content="{TemplateBinding Content}" 
+                               ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="LightBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Border Background="White" CornerRadius="10" BorderThickness="1" BorderBrush="Gray">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите код" HorizontalAlignment="Center" FontSize="14" FontFamily="Arial Black" Foreground="DarkGray"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox x:Name="textBox1" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                    <TextBox x:Name="textBox2" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                    <TextBox x:Name="textBox3" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                    <TextBox x:Name="textBox4" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                    <TextBox x:Name="textBox5" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                    <TextBox x:Name="textBox6" Width="32" Height="35" Margin="2,0" BorderBrush="Gray" />
+                </StackPanel>
+
+                <Button x:Name="takeCodeAgain" 
+                        Style="{StaticResource HyperlinkButtonStyle}" 
+                        Click="takeCodeAgain_Click"
+                        Margin="2">
+                    Отправить код ещё раз
+                </Button>
+
+                <!--<Button x:Name="takeCodeAgain"
+                        Template="{StaticResource HyperlinkButtonStyle}" 
+                        Height="19"
+                        FontFamily="Arial Black"
+                        Foreground="White"
+                        FontSize="12"
+                        Content="ОТПРАВИТЬ КОД ЕЩЁ РАЗ"
+                        Background="MediumSeaGreen"  
+                        Margin="10,5,10,0"
+                        Click="takeCodeAgain_Click" Width="201"/>-->
+
+                <Button x:Name="cancel_button"
+                        Template="{StaticResource btTemplate}" 
+                        Height="19"
+                        FontFamily="Arial Black"
+                        Foreground="White"
+                        FontSize="12"
+                        Content="ОТМЕНА"
+                        Background="OrangeRed"  
+                        Margin="5,3"
+                        Click="cancel_button_Click" Width="91"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

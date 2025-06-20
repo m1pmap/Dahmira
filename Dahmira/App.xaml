@@ -1,0 +1,32 @@
+﻿<Application x:Class="Dahmira.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Dahmira.Services"
+             xmlns:converters="clr-namespace:Dahmira.Services.Converters">
+             <!--StartupUri="MainWindow.xaml">-->
+    <Application.Resources>
+        <local:ByteArrayToImageSourceConverter_Services x:Key="ByteArrayToImageSourceConverter"/>
+        <converters:NullToEmptyStringConverter x:Key="NullToEmptyStringConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <converters:NoneMultiplierDependencyConverter x:Key="NoneMultiplierDependencyConverter"/>
+        <converters:IdToVisibilityConverter x:Key="IdToVisibilityConverter"/>
+        <converters:BooleanErrorToDependencyImageSourceConverter x:Key="BooleanErrorToDependencyImageSourceConverter"/>
+        <converters:IdAndHeightToLineConverter x:Key="IdAndHeightToLineConverter"/>
+        <converters:NewLineToSpaceConverter  x:Key="NewLineConverter"/>
+        <converters:SpaceGroupDotDecimalConverter  x:Key="SpaceGroupDotDecimalConverter"/>
+        <converters:BoolToLightSkyBlueBrushConverter  x:Key="BoolToLightSkyBlueBrushConverter"/>
+        <converters:BoolToCornflowerBlueBrushConverter  x:Key="BoolToCornflowerBlueBrushConverter"/>
+        <converters:CategoryHideIconVisibilityMultiConverter  x:Key="CategoryHideIconVisibilityMultiConverter"/>
+        <converters:LogLvlToImageSourceConverter x:Key="LogLvlToImageSourceConverter"/>
+        <converters:InverseLvlLogToVisibilityConverter x:Key="InverseLvlLogToVisibilityConverter"/>
+        <converters:LvlLogToVisibilityConverter x:Key="LvlLogToVisibilityConverter"/>
+        <converters:StringToLowerCaseConverter x:Key="StringToLowerCaseConverter"/>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+    </Application.Resources>
+</Application>
